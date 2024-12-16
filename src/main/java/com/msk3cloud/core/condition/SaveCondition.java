@@ -1,6 +1,6 @@
 package com.msk3cloud.core.condition;
 
-import com.kingdee.bos.webapi.sdk.SaveParam;
+import com.kingdee.bos.webapi.entity.SaveParam;
 import com.msk3cloud.core.params.K3CloudBatchSaveParam;
 import com.msk3cloud.core.params.K3CloudSaveParam;
 import org.springframework.util.Assert;

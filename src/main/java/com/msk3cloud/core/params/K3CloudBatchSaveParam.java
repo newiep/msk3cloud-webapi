@@ -1,7 +1,7 @@
 package com.msk3cloud.core.params;
 
 import com.google.gson.annotations.SerializedName;
-import com.kingdee.bos.webapi.sdk.BatchSave;
+import com.kingdee.bos.webapi.entity.BatchSave;
 
 import java.util.List;
 

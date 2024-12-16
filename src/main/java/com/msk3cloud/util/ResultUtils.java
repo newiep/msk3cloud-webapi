@@ -1,9 +1,9 @@
 package com.msk3cloud.util;
 
-import com.kingdee.bos.webapi.sdk.RepoError;
-import com.kingdee.bos.webapi.sdk.RepoRet;
-import com.kingdee.bos.webapi.sdk.RepoStatus;
-import com.kingdee.bos.webapi.sdk.SuccessEntity;
+import com.kingdee.bos.webapi.entity.RepoError;
+import com.kingdee.bos.webapi.entity.RepoRet;
+import com.kingdee.bos.webapi.entity.RepoStatus;
+import com.kingdee.bos.webapi.entity.SuccessEntity;
 
 import java.util.List;
 import java.util.Optional;

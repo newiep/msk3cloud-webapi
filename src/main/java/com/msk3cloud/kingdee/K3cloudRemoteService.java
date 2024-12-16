@@ -1,9 +1,9 @@
 package com.msk3cloud.kingdee;
 
 import com.alibaba.fastjson.JSONObject;
-import com.kingdee.bos.webapi.sdk.QueryParam;
-import com.kingdee.bos.webapi.sdk.SaveParam;
-import com.kingdee.bos.webapi.sdk.SuccessEntity;
+import com.kingdee.bos.webapi.entity.QueryParam;
+import com.kingdee.bos.webapi.entity.SaveParam;
+import com.kingdee.bos.webapi.entity.SuccessEntity;
 import com.msk3cloud.core.params.K3CloudBatchSaveParam;
 import com.msk3cloud.kingdee.entity.common.EntityResult;
 import com.msk3cloud.core.params.K3CloudSaveParam;

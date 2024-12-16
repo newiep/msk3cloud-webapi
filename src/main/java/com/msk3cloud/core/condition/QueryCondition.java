@@ -1,7 +1,7 @@
 package com.msk3cloud.core.condition;
 
 import com.alibaba.fastjson.JSON;
-import com.kingdee.bos.webapi.sdk.QueryParam;
+import com.kingdee.bos.webapi.entity.QueryParam;
 import org.springframework.util.CollectionUtils;
 
 import java.text.SimpleDateFormat;

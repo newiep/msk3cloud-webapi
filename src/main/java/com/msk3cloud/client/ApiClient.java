@@ -1,8 +1,8 @@
 package com.msk3cloud.client;
 
-import com.kingdee.bos.webapi.sdk.QueryParam;
-import com.kingdee.bos.webapi.sdk.RepoRet;
-import com.kingdee.bos.webapi.sdk.SaveParam;
+import com.kingdee.bos.webapi.entity.QueryParam;
+import com.kingdee.bos.webapi.entity.RepoRet;
+import com.kingdee.bos.webapi.entity.SaveParam;
 import com.msk3cloud.kingdee.entity.common.EntityResult;
 import com.msk3cloud.kingdee.request.OperateParam;
 
@@ -87,5 +87,13 @@ public interface ApiClient {
      * @return
      */
     RepoRet delete(String formId, OperateParam operateParam) throws Exception;
+
+    /**
+     * 下推单据
+     * @param formId
+     * @param operateParam
+     * @return
+     */
+    RepoRet push(String formId, OperateParam operateParam) throws Exception;
 
 }

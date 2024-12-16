@@ -3,6 +3,7 @@ package com.msk3cloud.client;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.google.gson.internal.LinkedTreeMap;
+import com.kingdee.bos.webapi.entity.*;
 import com.kingdee.bos.webapi.sdk.*;
 import com.msk3cloud.constant.K3CloudApiConstants;
 import com.msk3cloud.config.K3CloudApiConfig;
@@ -42,10 +43,9 @@ public class K3CloudApiClient implements ApiClient {
         this.k3CloudApiConfig = k3CloudApiConfig;
 
         // init
-        AppCfg appCfg = CfgUtil.getAppDefaultCfg();
-        AppCfgUtils.config( appCfg, k3CloudApiConfig );
-        this.k3CloudApi = new K3CloudApi( appCfg.getServerUrl(),appCfg.getRequestTimeout() );
-
+        IdentifyInfo identifyInfo = new IdentifyInfo();
+        AppCfgUtils.config(identifyInfo, k3CloudApiConfig );
+        this.k3CloudApi = new K3CloudApi(identifyInfo);
         // auth
         if (! this.authApiClient() ){
             throw new RuntimeException("[K3CloudApiClient] authApiClient auth fail at start !");
@@ -91,26 +91,27 @@ public class K3CloudApiClient implements ApiClient {
      * @return
      */
     public Boolean authApiClient( ){
-        synchronized (this){
-            if(! authStatus ){
-                try {
-                    Object[] params = Arrays.asList( k3CloudApiConfig.getAcctId(), k3CloudApiConfig.getUserName(), k3CloudApiConfig.getPassword(), k3CloudApiConfig.getLcId()).toArray();
-                    this.validateUser = this.apiInstance().execute( K3CloudApiConstants.VALIDATE_USER_API, params, ValidateUser.class);
-                    if( validateUser == null || validateUser.getLoginresulttype() == null || validateUser.getLoginresulttype() != 1){
-                        this.authStatus = false;
-                        throw new RuntimeException("[K3CloudApiClient] authApiClient auth fail,username or password error!");
-                    }
-                    this.authStatus = true;
-                    return true;
-                } catch (Exception ex){
-                    this.authStatus = false;
-                    log.error("[K3CloudApiClient] authApiClient auth fail !",ex);
-                    return false;
-                }
-            }
-            return true;
-        }
-
+        this.authStatus = true;
+        return true;
+//        synchronized (this){
+//            if(! authStatus ){
+//                try {
+//                    Object[] params = Arrays.asList( k3CloudApiConfig.getAcctId(), k3CloudApiConfig.getUserName(), k3CloudApiConfig.getPassword(), k3CloudApiConfig.getLcId()).toArray();
+//                    this.validateUser = this.apiInstance().execute( K3CloudApiConstants.VALIDATE_USER_API, params, ValidateUser.class);
+//                    if( validateUser == null || validateUser.getLoginresulttype() == null || validateUser.getLoginresulttype() != 1){
+//                        this.authStatus = false;
+//                        throw new RuntimeException("[K3CloudApiClient] authApiClient auth fail,username or password error!");
+//                    }
+//                    this.authStatus = true;
+//                    return true;
+//                } catch (Exception ex){
+//                    this.authStatus = false;
+//                    log.error("[K3CloudApiClient] authApiClient auth fail !",ex);
+//                    return false;
+//                }
+//            }
+//            return true;
+//        }
     }
 
 
@@ -125,6 +126,7 @@ public class K3CloudApiClient implements ApiClient {
         String result = this.apiInstance().view(formId, data);
         return this.postProcess(formId, data, result);
     }
+
 
     @Override
     public List<List<Object>> documentQuery(QueryParam queryParam) throws Exception {
@@ -227,6 +229,13 @@ public class K3CloudApiClient implements ApiClient {
         return JSON.parseObject(responseJson, RepoRet.class);
     }
 
+    @Override
+    public RepoRet push(String formId, OperateParam operateParam) throws Exception {
+        String params = operateParam.toJson();
+        String responseJson = this.apiInstance().push(formId, params);
+        this.postProcess(formId, params, responseJson);
+        return JSON.parseObject(responseJson, RepoRet.class);
+    }
 
     /**
      * 批量保存or更新

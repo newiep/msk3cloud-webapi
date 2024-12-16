@@ -1,6 +1,6 @@
 package com.msk3cloud.kingdee.request;
 
-import com.kingdee.bos.webapi.sdk.JsonBase;
+import com.kingdee.bos.webapi.entity.JsonBase;
 import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;

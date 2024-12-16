@@ -1,7 +1,7 @@
 package com.msk3cloud.core.params;
 
 import com.google.gson.annotations.SerializedName;
-import com.kingdee.bos.webapi.sdk.SaveParam;
+import com.kingdee.bos.webapi.entity.SaveParam;
 
 /**
  * desc: 扩展保存参数
