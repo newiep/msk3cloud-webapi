@@ -142,5 +142,27 @@ public interface K3cloudRemoteService {
      */
     List<SuccessEntity> unAudit(String formId, OperateParam operateParam) throws Exception;
 
+    /**
+     * 下推单据
+     *
+     * {
+     *     "Ids": "",
+     *     "Numbers": [],
+     *     "EntryIds": [],
+     *     "RuleId": "DeliveryNotice-OutStock",
+     *     "TargetBillTypeId": "fillType",
+     *     "TargetOrgId": 1,
+     *     "TargetFormId": "",
+     *     "IsEnableDefaultRule": "false",
+     *     "IsDraftWhenSaveFail": "true",
+     *     "CustomParams": {}
+     * }
+     *
+     * {"Result":{"ResponseStatus":{"ErrorCode":"","IsSuccess":"false","Errors":[{"FieldName":"","Message":"","DIndex":0}],"SuccessEntitys":[{"Id":"","Number":"","DIndex":0}],"SuccessMessages":[{"FieldName":"","Message":"","DIndex":0}],"MsgCode":""},"ConvertResponseStatus":{"ErrorCode":"","IsSuccess":"false","Errors":[{"FieldName":"","Message":"","DIndex":0}],"SuccessEntitys":[{"Id":"","Number":"","DIndex":0}],"SuccessMessages":[{"FieldName":"","Message":"","DIndex":0}],"MsgCode":""}}}
+     * @param formId
+     * @return
+     */
+    List<SuccessEntity> push(String formId, OperateParam operateParam) throws Exception;
+
 }
 

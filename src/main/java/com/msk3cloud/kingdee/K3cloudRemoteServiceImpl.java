@@ -262,6 +262,12 @@ public class K3cloudRemoteServiceImpl implements K3cloudRemoteService {
         return handleRepoRet(repoRet);
     }
 
+    @Override
+    public List<SuccessEntity> push(String formId, OperateParam operateParam) throws Exception {
+        RepoRet repoRet = this.k3CloudApiClient.push(formId, operateParam);
+        return handleRepoRet(repoRet);
+    }
+
     private List<SuccessEntity> handleRepoRet(RepoRet repoRet) {
         Assert.notNull(repoRet, "调用结果repoRet is null");
         if (!repoRet.isSuccessfully()) {
