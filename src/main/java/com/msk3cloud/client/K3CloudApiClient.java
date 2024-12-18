@@ -7,6 +7,7 @@ import com.kingdee.bos.webapi.entity.*;
 import com.kingdee.bos.webapi.sdk.*;
 import com.msk3cloud.constant.K3CloudApiConstants;
 import com.msk3cloud.config.K3CloudApiConfig;
+import com.msk3cloud.core.condition.SaveCondition;
 import com.msk3cloud.kingdee.entity.common.EntityResult;
 import com.msk3cloud.kingdee.entity.login.ValidateUser;
 import com.msk3cloud.kingdee.request.OperateParam;

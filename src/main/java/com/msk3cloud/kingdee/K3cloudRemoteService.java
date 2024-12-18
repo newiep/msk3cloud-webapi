@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.kingdee.bos.webapi.entity.QueryParam;
 import com.kingdee.bos.webapi.entity.SaveParam;
 import com.kingdee.bos.webapi.entity.SuccessEntity;
+import com.msk3cloud.core.condition.SaveCondition;
 import com.msk3cloud.core.params.K3CloudBatchSaveParam;
 import com.msk3cloud.kingdee.entity.common.EntityResult;
 import com.msk3cloud.core.params.K3CloudSaveParam;
@@ -45,6 +46,13 @@ public interface K3cloudRemoteService {
      * @return
      */
     <P> EntityResult saveOrUpdate(String formId, SaveParam<P> saveParam) throws Exception;
+
+    /**
+     * 保存or更新
+     *   k3cloud 实际调用 is save
+     * @return
+     */
+    <P> Result<P> saveOrUpdate(String formId, SaveCondition<P> saveCondition) throws Exception;
 
     /**
      * 带返回对象的 保存or更新

@@ -11,6 +11,7 @@ import com.kingdee.bos.webapi.entity.RepoRet;
 import com.kingdee.bos.webapi.entity.SaveParam;
 import com.kingdee.bos.webapi.entity.SuccessEntity;
 import com.msk3cloud.client.K3CloudApiClient;
+import com.msk3cloud.core.condition.SaveCondition;
 import com.msk3cloud.core.params.K3CloudBatchSaveParam;
 import com.msk3cloud.kingdee.entity.common.EntityResult;
 import com.msk3cloud.kingdee.request.OperateParam;
@@ -61,6 +62,13 @@ public class K3cloudRemoteServiceImpl implements K3cloudRemoteService {
     @Override
     public <P> EntityResult saveOrUpdate(String formId, SaveParam<P> saveParam) throws Exception {
         return this.k3CloudApiClient.saveOrUpdate(formId, saveParam);
+    }
+
+    @Override
+    public <P> Result<P> saveOrUpdate(String formId, SaveCondition<P> saveCondition) throws Exception {
+        String responseJson = this.k3CloudApiClient.saveOrUpdateWithReturnObj(formId, saveCondition.k3CloudSaveParam().toJson());
+        return JSON.parseObject(responseJson, new TypeReference< ResponseResult<P>>() {
+        }).getResult();
     }
 
     @Override
